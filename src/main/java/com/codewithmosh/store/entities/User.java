@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //because of the auto-increment feature of the foreign key
     @Column(name = "id")
     private Long id;
 
@@ -43,9 +43,6 @@ public class User {
         addresses.remove(address);
         address.setUser(null);
     }
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private Profile profile;
 
     @ManyToMany
     @JoinTable(
